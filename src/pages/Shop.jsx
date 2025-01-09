@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
-import { CartContext } from "../components/CartContext"; // استيراد السياق
-import Homeproduct from "../assets/home_product"; // تأكد من مسار استيراد المنتجات
+import { CartContext } from "../components/CartContext"; 
+import Homeproduct from "../assets/home_product"; 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Shop = () => {
-  const { cart, addToCart } = useContext(CartContext); // استخدام cart و addToCart من السياق
+  const { cart, addToCart } = useContext(CartContext); 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [alertVisible, setAlertVisible] = useState(false); // حالة لرؤية الإشعار
-  const [alertMessage, setAlertMessage] = useState(""); // لتخزين رسالة الإشعار
+  const [alertVisible, setAlertVisible] = useState(false); 
+  const [alertMessage, setAlertMessage] = useState(""); 
 
   const filteredProducts = Homeproduct.filter((product) =>
     selectedCategory === "all" ? true : product.cat === selectedCategory
@@ -20,17 +20,17 @@ const Shop = () => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product); // إضافة المنتج إلى العربة
-    setAlertMessage(`${product.Name} added to cart!`); // تعيين رسالة الإشعار
-    setAlertVisible(true); // إظهار الإشعار
+    addToCart(product); 
+    setAlertMessage(`${product.Name} added to cart!`);
+    setAlertVisible(true);
     setTimeout(() => {
-      setAlertVisible(false); // إخفاء الإشعار بعد 3 ثوانٍ
+      setAlertVisible(false); 
     }, 3000);
   };
 
   return (
     <div className="flex flex-col md:flex-row relative">
-      {/* الشريط الجانبي للفئات */}
+     
       <aside className="left_section w-full md:w-1/4 p-7">
         <h2 className="uppercase text-4xl text-[#4f4f4f]">
           <Link to={"../shop"}># shop</Link>
@@ -43,7 +43,7 @@ const Shop = () => {
           <li className="cursor-pointer list-none">shop</li>
         </nav>
 
-        {/* قائمة الفئات - تظهر في الشاشات الكبيرة */}
+      
         <div className="hidden md:block mt-5">
           <h2 className="uppercase font-semibold text-xl text-[#4f4f4f]">
             All Categories
@@ -72,7 +72,7 @@ const Shop = () => {
           </ul>
         </div>
 
-        {/* أيقونة القائمة - تظهر في الشاشات الصغيرة */}
+        
         <button
           onClick={toggleMenu}
           className="mt-5 p-2 border rounded bg-[#4f4f4f] text-white md:hidden"
@@ -80,7 +80,7 @@ const Shop = () => {
           {isMenuOpen ? "Hide Categories" : "Show Categories"}
         </button>
 
-        {/* قائمة الفئات - تظهر في الشاشات الصغيرة */}
+    
         {isMenuOpen && (
           <div className="fixed inset-0 bg-gray-800 bg-opacity-90 flex flex-col items-center justify-center z-50 md:hidden">
             <h2 className="uppercase font-semibold text-xl text-white mb-4">
@@ -120,18 +120,18 @@ const Shop = () => {
           </div>
         )}
 
-        {/* الصور الجانبية */}
+        
         <img src="image/shop_left.avif" alt="Shop Left" className="w-full" />
       </aside>
 
-      {/* قسم المنتجات */}
+   
       <main className="right_section w-full md:w-3/4 p-7">
         <img src="image/shop_top.webp" alt="Shop Top" className="w-full" />
         <h2 className="title uppercase text-[#4f4f4f] text-2xl p-5">
           shop product
         </h2>
 
-        {/* إشعار إضافة المنتج */}
+  
         {alertVisible && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -158,7 +158,7 @@ const Shop = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: .03  }} // يمكنك ضبط التأخير لتحسين التفاعل
+              transition={{ duration: 0.3, delay: .03  }} 
               key={product.id}
               className="box relative overflow-hidden p-2 border border-gray-200 rounded-lg shadow-lg transition-transform hover:scale-105 group"
             >
@@ -175,7 +175,7 @@ const Shop = () => {
                 </h3>
                 <p className="text-[#314c57] text-xl  mb-4">${product.price}</p>
                 <button
-                  onClick={() => handleAddToCart(product)} // تعديل دالة الإضافة
+                  onClick={() => handleAddToCart(product)} 
                   className="bg-[#314c57] text-white hover:bg-[#73061b] hover:text-yellow-400 capitalize transition duration-300  w-full py-1 rounded"
                 >
                   Add To Cart

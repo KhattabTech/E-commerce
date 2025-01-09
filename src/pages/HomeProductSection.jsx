@@ -4,10 +4,10 @@ import Homeproduct from "../assets/home_product";
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import Modal from "react-modal";
 import { CartContext } from "../components/CartContext";
-import { motion } from "framer-motion"; // استيراد framer-motion
+import { motion } from "framer-motion"; 
 import { HiX } from "react-icons/hi";
 
-// إعدادات Modal
+
 Modal.setAppElement("#root");
 
 const HomeProductSection = () => {
@@ -23,7 +23,7 @@ const HomeProductSection = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [favorites, setFavorites] = useState({}); // حالة التفضيل لكل منتج
+  const [favorites, setFavorites] = useState({});
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -99,7 +99,6 @@ const HomeProductSection = () => {
         </div>
       ))}
 
-      {/* إشعار إضافة المنتج */}
       {alertVisible && (
         <motion.div
           initial={{ opacity: 0, x: 50 }}
@@ -121,7 +120,6 @@ const HomeProductSection = () => {
         </motion.div>
       )}
 
-      {/* نافذة Modal لتفاصيل المنتج */}
       {selectedProduct && (
         <Modal
           isOpen={modalIsOpen}

@@ -16,9 +16,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // هنا يمكنك إضافة الكود لإرسال البيانات إلى الخادم
     console.log("Form Data Submitted:", formData);
-    // إعادة تعيين الحقول بعد الإرسال
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 

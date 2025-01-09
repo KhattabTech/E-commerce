@@ -16,7 +16,7 @@ const Home = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isFavorited, setIsFavorited] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null); // المنتج المحدد
+  const [selectedProduct, setSelectedProduct] = useState(null); 
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -58,7 +58,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* قسم البانر */}
       <motion.div
         className="top_banner relative"
         initial={{ opacity: 0, y: 50 }}
@@ -67,9 +66,9 @@ const Home = () => {
       >
         <motion.div
           className="contact text-start absolute top-[30%] left-[5%] w-[75%]"
-          initial={{ opacity: 0, y: -20 }} // الحالة الابتدائية
-          animate={{ opacity: 1, y: 0 }} // الحالة النهائية
-          transition={{ duration: 0.8 }} // مدة الانتقال
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }} 
         >
           <h3 className="text-slate-800 text-2xl capitalize">Discover More</h3>
           <h2 className="text-6xl font-medium py-5 text-[#233841]">
@@ -81,7 +80,7 @@ const Home = () => {
           </p>
           <motion.button
             className="bg-[#314c57] text-white hover:bg-[#73061b] capitalize transition duration-300 w-40 h-10 font-medium"
-            whileHover={{ scale: 1.05 }} // تأثير عند تمرير الماوس
+            whileHover={{ scale: 1.05 }}
           >
             <Link to="/shop" className="link">
               Shop now
@@ -90,7 +89,7 @@ const Home = () => {
         </motion.div>
       </motion.div>
 
-      {/* قسم المنتجات الشائعة */}
+      
       <div className="trending py-10">
         <div className="container">
           <div className="header uppercase flex justify-center bg-zinc-300 p-5 rounded-md">
@@ -109,7 +108,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* إشعار إضافة المنتج */}
           {alertVisible && (
             <div className="fixed top-4 right-4 bg-green-200 px-6 py-4 rounded-md text-lg flex items-center mx-auto max-w-lg shadow-lg z-50">
               <svg
@@ -125,20 +123,19 @@ const Home = () => {
             </div>
           )}
 
-          {/* قائمة المنتجات */}
+          
           <div className="products px-5 mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {trendingProduct.map((curElm, index) => (
               <motion.div
                 key={curElm.id}
                 className="box relative z-10 overflow-hidden p-2 border border-gray-200 rounded-lg shadow-lg transition-transform hover:scale-105 group"
-                initial={{ opacity: 0, y: 20 }} // الحالة الابتدائية
-                animate={{ opacity: 1, y: 0 }} // الحالة النهائية
-                transition={{ duration: 0.5, delay: index * 0.1 }} // تأخير بسيط لكل عنصر
+                initial={{ opacity: 0, y: 20 }} 
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {/* أيقونات */}
+             
                 <div className="actions right-5 absolute z-30 flex flex-col gap-2">
                   <button
-                    onClick={() => openModal(curElm)} // فتح المودال عند النقر
+                    onClick={() => openModal(curElm)} 
                     className="text-gray-600 hover:text-black transition-all duration-300"
                   >
                     <FaEye />
@@ -187,7 +184,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* قسم العروض */}
+      
       <div className="banners grid grid-cols-1 md:grid-cols-3 gap-4 mx-auto max-w-7xl p-4">
         <div className="flex flex-col gap-4 md:col-span-1">
           <img
@@ -222,7 +219,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* المودال */}
+     
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -235,9 +232,9 @@ const Home = () => {
         </button>
         {selectedProduct && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }} // الحالة الابتدائية
-            animate={{ opacity: 1, scale: 1 }} // الحالة النهائية
-            transition={{ duration: 0.3 }} // مدة الانتقال
+            initial={{ opacity: 0, scale: 0.8 }} 
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }} 
             className="mt-20"
           >
             <img
