@@ -17,6 +17,5 @@ root.render(
     <CartProvider>
       <App />
     </CartProvider>
-    
   </Auth0Provider>
 );

@@ -3,31 +3,30 @@ import { IoIosSearch, IoIosLogIn, IoIosLogOut } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import { HiMenu, HiX } from "react-icons/hi"; // أيقونات الهامبرغر والإغلاق
-import { useState } from "react"; // استيراد useState
-import { motion, AnimatePresence } from "framer-motion"; // استيراد framer-motion
+import { HiMenu, HiX } from "react-icons/hi";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaHome, FaInfoCircle, FaPhone, FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // حالة القائمة
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleClickOutside = () => {
     if (isMenuOpen) {
-      setIsMenuOpen(false); // أغلق الشريط السفلي
+      setIsMenuOpen(false);
     }
   };
+
   return (
     <div onClick={handleClickOutside} className="relative">
       <div className="flex justify-between p-3">
-        {/* معلومات الشحن المجاني */}
         <div className="flex items-center gap-2 px-6 py-2 text-gray-500 text-sm md:text-base lg:text-xl">
           <MdLocalShipping />
           <p>Free Shipping When Shopping upto 1000$</p>
         </div>
-        {/* زر القائمة */}
-        <div className="mr-0 md:mr-7 flex justify-center items-center ">
+        <div className="mr-0 md:mr-7 flex justify-center items-center">
           <div>
-            {" "}
             <Link to="/cart" className="mr-4 flex items-center">
               <FaShoppingCart className="text-black z-20 text-2xl" />
             </Link>
@@ -44,14 +43,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* الشريط العلوي */}
       <div className="flex flex-col md:flex-row items-start justify-between px-4">
         <img
-          src="image/logo.webp"
+          src="image/logo.png"
           alt="logo"
           className="h-12 md:h-16 w-auto mb-4 md:mb-0"
         />
-        {/* شريط البحث */}
         <div className="search flex flex-grow mx-4 justify-center w-full">
           <input
             className="p-2 bg-gray-100 font-semibold border rounded-l-xl outline-none flex-grow"
@@ -63,7 +60,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {/* عرض الخصم */}
+
       <div className="offer w-full p-4 bg-[#314c57] mt-5 overflow-hidden">
         <motion.p
           className="text-yellow-400 uppercase font-semibold"
@@ -74,17 +71,16 @@ const Navbar = () => {
         </motion.p>
       </div>
 
-      {/* الشريط السفلي - يظهر عند فتح القائمة */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }} // البداية مع إخفاء الشريط
-            animate={{ opacity: 1, y: 0 }} // يظهر في المنتصف
-            exit={{ opacity: 0, y: 20 }} // العودة للخلف عند الخروج
-            transition={{ duration: 0.3 }} // مدة الانتقال
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
             className="last-header absolute top-16 left-0 right-0 flex flex-col z-10 md:flex-row justify-between items-center bg-zinc-800 text-white text-sm font-semibold w-full py-4 px-5"
           >
-            <div className="md:hidden flex w-full justify-end ">
+            <div className="md:hidden flex w-full justify-end">
               <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <HiX className="text-white z-20 text-3xl" />
               </button>
@@ -150,19 +146,18 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="flex">
-              {/* زر تسجيل الدخول / الخروج */}
               <div className="user flex items-center justify-center w-full gap-5 mt-3 sm:mt-3 md:mt-0 lg:mt-0 xl:mt-0">
                 {isAuthenticated ? (
-                  // زر تسجيل الخروج
                   <button
                     className="flex space-x-2 items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 border border-transparent rounded transition-all duration-300"
-                    onClick={() => logout({ returnTo: window.location.origin })}
+                    onClick={() =>
+                      logout({ returnTo: window.location.origin })
+                    }
                   >
                     <IoIosLogOut className="text-xl" />
                     <span>Logout</span>
                   </button>
                 ) : (
-                  // زر تسجيل الدخول
                   <button
                     className="flex space-x-2 items-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 border border-transparent rounded transition-all duration-300"
                     onClick={() => loginWithRedirect()}

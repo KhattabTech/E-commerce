@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { CartContext } from "./CartContext"; // تأكد من أن المسار صحيح
+import { CartContext } from "./CartContext"; 
 import { Link } from "react-router-dom";
 import PaypalIcon from "../../public/image/paypal.png";
 
 const CartPage = () => {
   const { cart, setCart } = useContext(CartContext);
 
-  // زيادة الكمية
+
   const incqty = (product) => {
     const updatedCart = cart.map((item) =>
       item.id === product.id ? { ...item, qty: item.qty + 1 } : item
@@ -14,7 +14,7 @@ const CartPage = () => {
     setCart(updatedCart);
   };
 
-  // تقليل الكمية
+
   const decqty = (product) => {
     const updatedCart = cart.map((item) =>
       item.id === product.id && item.qty > 1
@@ -24,13 +24,13 @@ const CartPage = () => {
     setCart(updatedCart);
   };
 
-  // حذف المنتج من السلة
+ 
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter((item) => item.id !== productId);
     setCart(updatedCart);
   };
 
-  // دالة لحساب المجموع الفرعي
+
   const calculateSubTotal = () => {
     return cart
       .reduce((acc, item) => acc + item.price * item.qty, 0)
@@ -39,7 +39,7 @@ const CartPage = () => {
 
   return (
     <div className="cart-page-container flex flex-col md:flex-row gap-8 w-full p-7">
-      {/* قسم السلة */}
+
       <div className="cart-items-section w-full md:w-2/3">
         <h2 className="uppercase text-4xl text-[#4f4f4f]">Shopping cart</h2>
         <nav className="flex gap-2 text-[#4f4f4f] font-semibold mt-3">
@@ -111,7 +111,6 @@ const CartPage = () => {
         </button>
       </div>
 
-      {/* قسم المجموع وزر Checkout */}
       {cart.length > 0 && (
         <div className="order-summary w-full md:w-1/3 p-6 bg-gray-100 rounded-lg shadow-lg mt-8 md:mt-0">
           <h3 className="text-xl font-semibold text-gray-700 mb-4">

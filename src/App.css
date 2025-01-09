@@ -48,7 +48,7 @@ body {
 }
 
 .img_box {
-  position: relative; /* تأكد من أن هذه الفئة تحتوي على هذا السمة */
+  position: relative;
 }
 .modal {
   background: white;
@@ -73,17 +73,17 @@ body {
 }
 @keyframes move-text {
   0% {
-    transform: translateX(360%); /* يبدأ النص من خارج الشاشة على اليمين */
+    transform: translateX(360%);
   }
   100% {
-    transform: translateX(-360%); /* ينتهي النص خارج الشاشة على اليسار */
+    transform: translateX(-360%);
   }
 }
 
 .moving-text {
-  display: inline-block; /* تأكد من أن العنصر يتفاعل مع التحريك */
-  animation: move-text s linear infinite; /* 5 ثواني، حركة سلسة، تتكرر للأبد */
-  white-space: nowrap; /* منع النص من الالتفاف إلى سطر جديد */
+  display: inline-block;
+  animation: move-text s linear infinite;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) and (max-width: 932px) {
@@ -92,7 +92,5 @@ body {
   }
 }
 .modal {
-
   height: auto;
-
 }
