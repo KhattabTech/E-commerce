@@ -25,12 +25,8 @@ This is a modern **E-commerce web application** built with React.js, designed to
 4. **User Authentication**:
    - Login and logout using Auth0.
    - Personalized user dashboard displaying profile details.
-
-5. **Payment and Shipping**:
-   - Secure payment options using services like Stripe or PayPal.
-   - Free shipping notification for orders above $1000.
-
-6. **Offers and Discounts**:
+   - 
+5. **Offers and Discounts**:
    - Animated banner displaying the latest offers (e.g., "Flat 10% off on all iPhones").
 
 ---
