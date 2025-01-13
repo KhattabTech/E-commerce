@@ -130,6 +130,7 @@ const Home = () => {
                 key={curElm.id}
                 className="box relative z-10 overflow-hidden p-2 border border-gray-200 rounded-lg shadow-lg transition-transform hover:scale-105 group"
                 initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 20 }} 
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
              
